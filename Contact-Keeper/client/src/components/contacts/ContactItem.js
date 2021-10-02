@@ -7,7 +7,7 @@ export const ContactItem = ({ contact }) => {
 
      const onDelete = () => {
           console.log(contact.id +"id is")
-        deleteContact(contact.id);
+        deleteContact(contact._id);
         clearContact();
      }
 
