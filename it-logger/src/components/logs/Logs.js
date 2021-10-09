@@ -1,24 +1,28 @@
 import React, { useState ,useEffect } from 'react';
 import Logitem from './Logitem';
+import {connect} from 'react-redux';
+import PropTypes from 'prop-types';
+import {getLogs} from '../../actions/logActions';
+import {addLogs} from '../../actions/logActions';
 
 import Preloader from '../layout/Preloader';
-export const Logs = () => {
-    const [logs, setLogs] = useState([]);
-    const [loading,setLoading] =useState(false);
+export const Logs = ({log : {logs , loading}, getLogs, addLogs}) => {
+    // const [logs, setLogs] = useState([]);
+    // const [loading,setLoading] =useState(false);
 
     useEffect(() => {
         getLogs();
     },[]);
 
-    const getLogs = async () => {
-        setLoading(true);
-        const res = await fetch('/logs');
-        const data = await res.json();
-        // console.log(data +"this is returned data");
-        setLogs(data);
-        setLoading(false);
-    }
-    if(loading) {
+    // const getLogs = async () => {
+    //     setLoading(true);
+    //     const res = await fetch('/logs');
+    //     const data = await res.json();
+    //     // console.log(data +"this is returned data");
+    //     setLogs(data);
+    //     setLoading(false);
+    // }
+    if(loading || logs === null) {
         return  <Preloader></Preloader>
     } else {
         return (
@@ -38,5 +42,16 @@ export const Logs = () => {
     }
     
 }
+Logs.propTypes = {
+    log : PropTypes.object.isRequired,
+    getLogs: PropTypes.func.isRequired,
+}
+const mapStateToProps = state => ({
+    //bring whole state and destruction at top
+    log :state.log
+    // or can bring specific value like below
+    // log :state.log.logs,
+    // loading:state.log.loading
+})
 
-export default Logs;
+export default connect(mapStateToProps, {getLogs})(Logs);
