@@ -3,10 +3,9 @@ import Logitem from './Logitem';
 import {connect} from 'react-redux';
 import PropTypes from 'prop-types';
 import {getLogs} from '../../actions/logActions';
-import {addLogs} from '../../actions/logActions';
 
 import Preloader from '../layout/Preloader';
-export const Logs = ({log : {logs , loading}, getLogs, addLogs}) => {
+export const Logs = ({log : {logs , loading}, getLogs}) => {
     // const [logs, setLogs] = useState([]);
     // const [loading,setLoading] =useState(false);
 

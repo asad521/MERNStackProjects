@@ -8,45 +8,19 @@
       "tech": "Sam Smith"
     },
     {
-      "id": 2,
-      "message": "Workstation 007 not posting",
-      "attention": true,
-      "date": "01-01-2020",
-      "tech": "Jhon Doe"
-    },
-    {
       "id": 3,
       "message": "Changed memory on  workstation 50",
-      "attention": false,
-      "date": "01-01-2030",
-      "tech": "Sara Wilson "
+      "tech": "JohnDoen3",
+      "date": "2021-10-12T03:29:23.633Z"
     },
     {
-      "message": "adfaasdfasdf",
-      "attention": true,
+      "id": 4,
+      "message": "This is corrected",
       "tech": "JohnDoen2",
-      "date": "2021-10-08T19:13:29.445Z",
-      "id": 4
-    },
-    {
-      "message": "asdfasdfad",
-      "attention": false,
-      "tech": "JohnDoen2",
-      "date": "2021-10-08T19:13:37.723Z",
-      "id": 5
+      "date": "2021-10-11T14:01:58.073Z"
     }
   ],
   "tech": [
-    {
-      "id": "1",
-      "firstName": "Jhon",
-      "lastName": "Doe"
-    },
-    {
-      "id": "2",
-      "firstName": "Sara",
-      "lastName": "Wilson"
-    },
     {
       "id": "3",
       "firstName": "Sam",

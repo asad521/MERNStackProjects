@@ -1,14 +1,26 @@
 import React, { useState } from "react";
 import M from "materialize-css/dist//js/materialize.min.js";
-export const AddTechModal = () => {
-  const [firstname, setFirstName] = useState("");
-  const [lastname, setLastName] = useState("");
-
+import {connect} from "react-redux";
+import {addTech} from '../../actions/techActions';
+import PropTypes from 'prop-types';
+export const AddTechModal = ({ addTech }) => {
+  const [firstName, setFirstName] = useState("");
+  const [lastName, setLastName] = useState("");
+  console.log(firstName)
+  console.log(lastName)
+  let id=44;
   const onSubmit = (e) => {
-    if (firstname === "" || lastname === "") {
+    if (firstName === "" || lastName === "") {
       M.toast({ html: "Please enter the technician first and last name" });
     } else {
-      console.log(firstname, lastname);
+      // console.log(firstname, lastname);
+      addTech({
+        firstName,
+        lastName,
+        id,
+      })
+      M.toast({ html: `${firstName} & ${lastName} is added at technician name.`});
+
       //clearing fields
       setFirstName("");
       setLastName("");
@@ -22,11 +34,11 @@ export const AddTechModal = () => {
           <div className="input-field">
             <input
               type="text"
-              name="firstname"
-              value={firstname}
+              name="firstName"
+              value={firstName}
               onChange={(e) => setFirstName(e.target.value)}
             />
-            <label htmlFor="firstname" className="active">
+            <label htmlFor="firstName" className="active">
               First Name:
             </label>
           </div>
@@ -35,11 +47,11 @@ export const AddTechModal = () => {
           <div className="input-field">
             <input
               type="text"
-              name="lastname"
-              value={lastname}
+              name="lastName"
+              value={lastName}
               onChange={(e) => setLastName(e.target.value)}
             />
-            <label htmlFor="lastname" className="active">
+            <label htmlFor="lastName" className="active">
               Last Name:
             </label>
           </div>
@@ -62,5 +74,7 @@ const modalStyle = {
   widht: "75%",
   height: "75%",
 };
-
-export default AddTechModal;
+AddTechModal.propTypes = {
+  addTech: PropTypes.func.isRequired,
+}
+export default connect(null, {addTech})(AddTechModal);
