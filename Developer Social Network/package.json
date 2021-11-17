@@ -1,0 +1,12 @@
+{
+  "name": "developer-social-network",
+  "version": "1.0.0",
+  "description": "social network for the developer app",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server",
+    "server":"nodemon server"
+  },
+  "author": "M Asad",
+  "license": "ISC"
+}
