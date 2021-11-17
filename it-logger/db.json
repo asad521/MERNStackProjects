@@ -1,23 +1,11 @@
 {
   "logs": [
     {
-      "id": 1,
-      "message": "Changed harddrive on workstation 5",
-      "attention": false,
-      "date": "01-01-2010",
-      "tech": "Sam Smith"
-    },
-    {
-      "id": 3,
-      "message": "Changed memory on  workstation 50",
-      "tech": "JohnDoen3",
-      "date": "2021-10-12T03:29:23.633Z"
-    },
-    {
-      "id": 4,
-      "message": "This is corrected",
-      "tech": "JohnDoen2",
-      "date": "2021-10-11T14:01:58.073Z"
+      "message": "d",
+      "attention": true,
+      "tech": "ali khan",
+      "date": "2021-10-12T07:12:32.181Z",
+      "id": 1
     }
   ],
   "tech": [
