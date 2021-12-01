@@ -6,8 +6,9 @@ import Login from './Components/Auth/Login';
 import Register from './Components/Auth/Register';
 import Alert from './Components/Layout/Alert';
 import {loadUser} from './actions/auth';
-import Dashboard from './Components/Dashboard/Dashboard';
+import {Dashboard} from './Components/Dashboard/Dashboard';
 import PrivateRoute from './Components/Routing/PrivateRoute';
+import CreateProfile from './Components/Profile/CreateProfile';
 import {BrowserRouter as Router, Route, Switch,Routes} from 'react-router-dom';
 //Redux
 import {Provider} from 'react-redux';
@@ -19,9 +20,9 @@ import setAuthToken from './util/setAuthToken';
       setAuthToken(localStorage.token);
   }
 function App() {
-  useEffect(() => {
-    store.dispatch(loadUser());
-  },  []);
+  // useEffect(() => {
+  //   store.dispatch(loadUser());
+  // },  []);
   return (
     <Provider store={store}>
     <Router>
@@ -38,6 +39,7 @@ function App() {
           <Route exact path="/Register" element={<Register/>} />
           <Route exact path="/Login" element={<Login/>} />
           <Route exact path="/Dashboard" element={<PrivateRoute/>} />
+          <Route exact path="/createProfile" element={<CreateProfile/>} />
         </Routes>
       </section>
     </Fragment>

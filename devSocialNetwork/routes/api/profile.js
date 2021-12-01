@@ -40,8 +40,9 @@ router.post('/', [auth, [
     check('status','Status is required').not().isEmpty(),
     check('skills','Skills is required').not().isEmpty(),
 ]] , async (req,res) => {
-
+    console.log('in profile route')
     const errors = validationResult(req);
+    console.log(errors)
     if(!errors.isEmpty()) {
         return res.status(400).json({errors:errors.array()})
     }

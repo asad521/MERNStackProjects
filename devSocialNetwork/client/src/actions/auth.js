@@ -23,7 +23,7 @@ export const  loadUser = () =>async dispatch => {
             type:USER_LOADED,
             payload:res.data
         })
-        dispatch(loadUser());
+        // dispatch(loadUser());
     } catch (err) {
         dispatch({
             type:AUTH_ERROR
@@ -66,6 +66,7 @@ export const register = ({name,email, password}) => async dispatch => {
 //Login User
 
 export const login = (email, password) => async dispatch => {
+    console.log('in login action')
     const config = {
         headers: {
             'Content-Type': 'application/json'

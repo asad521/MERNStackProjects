@@ -27,7 +27,7 @@ export const Login = ({login,isAuthenticated}) => {
 
      // Redirect if loggin in  to change UI
      if(isAuthenticated) {
-      return  <Navigate replace to='/dashboard'/>
+      return  <Navigate replace to='/Dashboard'/>
   }  
   return (
     <Fragment>

@@ -34,7 +34,8 @@ router.post('/',[
     check('email','Please enter an valid email').isEmail(),
     check('password','please is required to login').exists()
 ], async (req, res) => {
-    
+    console.log("in backend route post");
+
     const errors =  validationResult(req);
 
     if (!errors.isEmpty()){

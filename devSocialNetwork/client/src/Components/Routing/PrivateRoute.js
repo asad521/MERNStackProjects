@@ -2,9 +2,10 @@ import React,{Fragment} from 'react'
 import PropTypes from 'prop-types';
 import {Route,Navigate,Routes,Outlet} from 'react-router-dom';
 import {connect} from 'react-redux';
+import Dashboard from '../Dashboard/Dashboard';
 const PrivateRoute = ({auth}) => {
     return  !auth.isAuthenticated && !auth.loading ?
-    (<Navigate replace to='/login'/>): (<Outlet/>)
+    (<Navigate replace to='/login'/>): (<Dashboard/>)
   }
 
 PrivateRoute.propTypes = {
