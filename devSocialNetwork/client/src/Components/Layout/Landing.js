@@ -3,9 +3,12 @@ import {Link,Navigate} from 'react-router-dom';
 import {connect} from 'react-redux';
 import PropTypes from 'prop-types';
 export const Landing = ({isAuthenticated}) => {
+  console.log('this is ladning page')
+  console.log(isAuthenticated +'This is authenticated')
+
   if(isAuthenticated) {
-    <Navigate replace to ="/Dashboard"/>
-  }
+    return  <Navigate replace to='/Dashboard'/>
+}  
     return (
 <section className="landing">
       <div className="dark-overlay">

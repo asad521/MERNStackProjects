@@ -15,7 +15,6 @@ const config = require('config');
 // router.get('/', auth, (req, res) => {res.send('profile route')});
 // getting a single login user profile
 router.get('/me', auth, async (req, res) => {
-    
      try {
          const profile = await Profile.findOne({user:  req.user.id}).populate('user',['name','avatar']);
         
@@ -90,7 +89,7 @@ router.post('/', [auth, [
             return res.json(profile);
 
         } else {
-        // return res.send("aaaaaa")
+        return res.send("aaaaaa")
       //create if not update not found
         profile =new Profile(profileFields);
         await profile.save();

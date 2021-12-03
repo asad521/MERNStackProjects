@@ -1,13 +1,13 @@
-import React,{Fragment, useState} from 'react';
+import React,{Fragment, useState,useEffect} from 'react';
 import PropType from 'prop-types';
 import {connect} from 'react-redux';
 import { createProfileAction } from '../../actions/profile';
 import {Link,Navigate} from 'react-router-dom';
 import { useNavigate } from 'react-router';
+import { get_current_profile } from '../../actions/profile';
 
-
-const CreateProfile = ({createProfileAction,profile}) => {
-  console.log('This is create profile comoponent')
+const EditProfile = ({createProfileAction,get_current_profile,profile:{profile,loading}}) => {
+  console.log("This is edit profile component")
     const [formData,setFormData] =useState({
         company:'',
         location:'',
@@ -22,6 +22,27 @@ const CreateProfile = ({createProfileAction,profile}) => {
         youtube:'',
         instagram:'',
     });
+    useEffect(() => {
+        console.log(company +'This is company');
+        console.log(profile );
+        console.log('Above is skills');
+        setFormData({
+            company: !profile.company ? '' :profile.company,
+            website: !profile.website ? '' :profile.website,
+            location: !profile.location ? '' :profile.location,
+            bio: !profile.company ? '' :profile.bio,
+            status: !profile.status ? '' :profile.status,
+            skills: !profile.skills ? 'a' :profile.skills,
+            githubusername: !profile.company ? '' :profile.company,
+            twitter: !profile.social ? '' :profile.social.twitter,
+            linkedin: !profile.social ? '' :profile.social.linkedin,
+            facebook: !profile.social ? '' :profile.social.facebook,
+            youtube: !profile.social ? '' :profile.social.youtube,
+            instagram: !profile.social ? '' :profile.social.instagram,
+        })
+    
+    },[])
+  
     //display social input state
     const [display,toggleSocialInput] =useState(false);
     //destructuing from formData array
@@ -42,24 +63,17 @@ const CreateProfile = ({createProfileAction,profile}) => {
         setFormData({...formData,[e.target.name]:e.target.value})
         
     }
-
+    let edit=null;
     const onSubmit = e => {
       e.preventDefault();
       console.log('ljl');
       console.log(formData+"This is data")
-      createProfileAction(formData,0);
+      createProfileAction(formData,1);
            // Redirect if loggin in  to change UI
-      console.log("After Created Profile");
-
-     
-      
+      console.log("After Edited Profile");            
 
     }
-    if(profile!==null) {
-      console.log(profile)
-      console.log(true)
-    return <Navigate replace to='/Dashboard'/>
-    }    
+
     return (
         <Fragment>
       <h1 className="large text-primary">
@@ -159,17 +173,17 @@ const CreateProfile = ({createProfileAction,profile}) => {
         </div></Fragment>}
         
         <input type="submit" className="btn btn-primary my-1" />
-        <a className="btn btn-light my-1" href="dashboard.html">Go Back</a>
+        <Link className="btn btn-light my-1" to="/Dashboard">Go Back</Link>
       </form>
         </Fragment>
     )
 };
 
 const mapStateToProps = (state) => ({
-  profile: state.profile.profile,
+  profile: state.profile,
 });
 
-export default connect(mapStateToProps,{createProfileAction})(CreateProfile)
+export default connect(mapStateToProps,{get_current_profile,createProfileAction})(EditProfile)
 
 
 

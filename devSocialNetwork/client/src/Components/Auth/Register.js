@@ -9,6 +9,8 @@ import { sanitizeQuery } from "express-validator";
 
 
 export const Register = ({setAlert,register,isAuthenticated})  => {
+  console.log('This is register component')
+
   let navigate = useNavigate();
   const [formData,setFormData] = useState({
     name:'',

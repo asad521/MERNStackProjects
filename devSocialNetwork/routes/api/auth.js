@@ -13,12 +13,14 @@ const jwt = require('jsonwebtoken');
 // @access  Public
 
 router.get('/', auth,async (req, res) => {
-    
+    console.log('This is auth route')
     try {
         const user = await User.findById(req.user.id).select('-password');
         res.json(user);
     }catch (err){
         console.log(err.message);
+        console.log('This is auth route')
+
         res.status(500).send('Server Error');
     }
     
@@ -34,7 +36,7 @@ router.post('/',[
     check('email','Please enter an valid email').isEmail(),
     check('password','please is required to login').exists()
 ], async (req, res) => {
-    console.log("in backend route post");
+    console.log("in backend route login");
 
     const errors =  validationResult(req);
 

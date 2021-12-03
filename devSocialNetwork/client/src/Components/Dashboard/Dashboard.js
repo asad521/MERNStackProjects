@@ -5,17 +5,18 @@ import {Link} from 'react-router-dom';
 import { get_current_profile } from '../../actions/profile';
 import Spinner from '../Layout/Spinner';
 import CreateProfile from '../Profile/CreateProfile';
+import DashboardActions from './DashboardActions';
 const Dashboard = ({get_current_profile,auth:{user},profile:{profile,loading}}) => {
-
-    // useEffect(() => {get_current_profile();},[]);
+    console.log('This is Dashboard Component.There is Useeffect after this')
+    useEffect(() => {get_current_profile();},[]);
 
     return (
-       loading && profile === null ? <Spinner/>:<Fragment>
+       loading && profile === null ? 'loading....':<Fragment>
         <h1 className="large text-primary">DashBoard</h1>
         <p className="lead"></p>
         <i className="fas fa-user">Welcome {user && user.name}</i>
         {/* //if there is a profile */}
-        {profile !== null ? (<Fragment>has profile</Fragment>) :
+        {profile !== null ? (<Fragment>has <DashboardActions/></Fragment>) :
         (<Fragment>You have not created a profile .Please Create a Profile:
             <Link to='/createProfile' className='btn btn-primary my-1'>Create Profile</Link>
         </Fragment>)}

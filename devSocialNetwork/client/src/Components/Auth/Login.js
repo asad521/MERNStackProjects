@@ -7,6 +7,7 @@ import { useNavigate } from 'react-router';
 import {BrowserRouter as Router, Route, Routes} from 'react-router-dom';
 
 export const Login = ({login,isAuthenticated}) => {
+  console.log('This is login component')
   let navigate = useNavigate();
 
   const [formData,setFormData] = useState({
@@ -21,12 +22,13 @@ export const Login = ({login,isAuthenticated}) => {
   const onSubmit = async e => {
     e.preventDefault();
     login(email, password);
-    console.log('login has done')
-   
+    console.log('login has done.Returned from action.This is login sumnent submit action')
   }
+  console.log(isAuthenticated+"tHIS IS ATUHENT")
 
      // Redirect if loggin in  to change UI
      if(isAuthenticated) {
+       console.log("This is authenticated in login action")
       return  <Navigate replace to='/Dashboard'/>
   }  
   return (

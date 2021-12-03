@@ -13,7 +13,7 @@ export const Navbar = ({ auth: { isAuthenticated, loading }, logout }) => {
       </li>
 
       <li>
-        <Link onClick={logout} to="/logout">
+        <Link onClick={logout} to="/">
           Logout
         </Link>
       </li>
@@ -40,7 +40,6 @@ export const Navbar = ({ auth: { isAuthenticated, loading }, logout }) => {
           <i className="fas fa-code"></i> DevConnector
         </Link>
       </h1>
-      {console.log(isAuthenticated)}
       {!loading && (
         <Fragment>{isAuthenticated ? authLinks : guestLinks}</Fragment>
       )}

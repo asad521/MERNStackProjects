@@ -9,6 +9,7 @@ import {loadUser} from './actions/auth';
 import {Dashboard} from './Components/Dashboard/Dashboard';
 import PrivateRoute from './Components/Routing/PrivateRoute';
 import CreateProfile from './Components/Profile/CreateProfile';
+import EditProfile from './Components/Profile/EditProfile';
 import {BrowserRouter as Router, Route, Switch,Routes} from 'react-router-dom';
 //Redux
 import {Provider} from 'react-redux';
@@ -40,6 +41,7 @@ function App() {
           <Route exact path="/Login" element={<Login/>} />
           <Route exact path="/Dashboard" element={<PrivateRoute/>} />
           <Route exact path="/createProfile" element={<CreateProfile/>} />
+          <Route exact path="/edit-profile" element={<EditProfile/>} />
         </Routes>
       </section>
     </Fragment>
