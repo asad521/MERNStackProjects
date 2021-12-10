@@ -159,7 +159,7 @@ const CreateProfile = ({createProfileAction,profile}) => {
         </div></Fragment>}
         
         <input type="submit" className="btn btn-primary my-1" />
-        <a className="btn btn-light my-1" href="dashboard.html">Go Back</a>
+        <Link className="btn btn-light my-1" to="/Dashboard">Go Back</Link>
       </form>
         </Fragment>
     )

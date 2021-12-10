@@ -3,6 +3,7 @@ const router = express.Router();
 const auth = require('../../middleware/auth');
 const Profile = require('../../models/Profile');
 const User = require('../../models/User');
+const Posts = require('../../models/Post');
 const {check,validationResult} = require('express-validator/check');
 //for github repos
 const request = require('request');
@@ -142,6 +143,8 @@ try {
 
 router.delete('/', auth, async(req,res) => {
 try {
+    //removing posts 
+    await Post.deleteMany({user : req.user.id})
     //removing profile 
     await Profile.findOneAndRemove({user: req.user.id});
     //Remove User
@@ -162,7 +165,7 @@ router.put('/experience',[auth,[
     check('company','Company Name is required').not().isEmpty(),
     check('from','From Date is required').not().isEmpty(),
 ]],async (req,res) => {
-
+    console.log('put request of add experince in backend profile.js')
     const errors = validationResult(req);
     if(!errors.isEmpty()) {
         res.status(400).json({errors:errors.array()});
@@ -180,11 +183,14 @@ router.put('/experience',[auth,[
     };
 
     try {
+        console.log('try of backend add experince');
         const profile = await Profile.findOne({user: req.user.id});
         profile.experience.unshift(newExp);
         await profile.save();
         res.json(profile);
     } catch (error) {
+        console.log('error bloack of backend ')
+
         console.log(error.message);
         res.status(500).send('Server Error')
                  
@@ -223,6 +229,7 @@ router.put('/education',[auth,[
     check('fieldofstudy','fieldofstudy  is required').not().isEmpty(),
     check('from','From Date is required').not().isEmpty(),
 ]],async (req,res) => {
+    console.log('put request of add education in backend profile.js')
 
     const errors = validationResult(req);
     if(!errors.isEmpty()) {
@@ -239,11 +246,15 @@ router.put('/education',[auth,[
     };
 
     try {
+        console.log('try  of backend add education')
+
         const profile = await Profile.findOne({user: req.user.id});
         profile.education.unshift(newEdu);
         await profile.save();
         res.json(profile);
     } catch (error) {
+        console.log('error of backend add education')
+
         console.log(error.message);
         res.status(500).send('Server Error')
                  

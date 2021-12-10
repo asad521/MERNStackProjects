@@ -6,7 +6,10 @@ import { get_current_profile } from '../../actions/profile';
 import Spinner from '../Layout/Spinner';
 import CreateProfile from '../Profile/CreateProfile';
 import DashboardActions from './DashboardActions';
-const Dashboard = ({get_current_profile,auth:{user},profile:{profile,loading}}) => {
+import Education from './Education';
+import Experience from './Experience';
+import { deleteAccount } from '../../actions/profile';
+const Dashboard = ({get_current_profile,auth:{user},deleteAccount,profile:{profile,loading,experience}}) => {
     console.log('This is Dashboard Component.There is Useeffect after this')
     useEffect(() => {get_current_profile();},[]);
 
@@ -16,7 +19,13 @@ const Dashboard = ({get_current_profile,auth:{user},profile:{profile,loading}}) 
         <p className="lead"></p>
         <i className="fas fa-user">Welcome {user && user.name}</i>
         {/* //if there is a profile */}
-        {profile !== null ? (<Fragment>has <DashboardActions/></Fragment>) :
+        {profile !== null ? (<Fragment>has <DashboardActions/>
+        <Education experience={profile.experience}></Education>
+        <Experience education={profile.education}></Experience>
+        <div className="my-2">
+            <button className="btn btn-danger" onClick={() =>deleteAccount()}>Delete My Account</button>
+        </div>
+        </Fragment>) :
         (<Fragment>You have not created a profile .Please Create a Profile:
             <Link to='/createProfile' className='btn btn-primary my-1'>Create Profile</Link>
         </Fragment>)}
@@ -34,4 +43,4 @@ const mapStateToProps = state => ({
     profile: state.profile
 })
 
-export default connect(mapStateToProps,{get_current_profile})(Dashboard);
+export default connect(mapStateToProps,{get_current_profile,deleteAccount})(Dashboard);

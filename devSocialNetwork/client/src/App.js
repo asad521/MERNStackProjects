@@ -10,6 +10,10 @@ import {Dashboard} from './Components/Dashboard/Dashboard';
 import PrivateRoute from './Components/Routing/PrivateRoute';
 import CreateProfile from './Components/Profile/CreateProfile';
 import EditProfile from './Components/Profile/EditProfile';
+import AddExp from './Components/Profile/AddExp';
+import AddEdu from './Components/Profile/AddEdu';
+import Profiles from './Components/Profiles/Profiles';
+import Profile from './Components/Profile2/Profile';
 import {BrowserRouter as Router, Route, Switch,Routes} from 'react-router-dom';
 //Redux
 import {Provider} from 'react-redux';
@@ -39,9 +43,14 @@ function App() {
         <Routes>
           <Route exact path="/Register" element={<Register/>} />
           <Route exact path="/Login" element={<Login/>} />
+          <Route exact path="/profiles" element={<Profiles/>} />
+          <Route exact path="/profile/:id" id='234' element={<Profile/>} />
+          
           <Route exact path="/Dashboard" element={<PrivateRoute/>} />
           <Route exact path="/createProfile" element={<CreateProfile/>} />
           <Route exact path="/edit-profile" element={<EditProfile/>} />
+          <Route exact path="/add-education" element={<AddEdu/>} />
+          <Route exact path="/add-experience" element={<AddExp/>} />
         </Routes>
       </section>
     </Fragment>
