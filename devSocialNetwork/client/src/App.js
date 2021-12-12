@@ -8,12 +8,14 @@ import Alert from './Components/Layout/Alert';
 import {loadUser} from './actions/auth';
 import {Dashboard} from './Components/Dashboard/Dashboard';
 import PrivateRoute from './Components/Routing/PrivateRoute';
+import PrivateRoutePost from './Components/Routing/PrivateRoutePost';
 import CreateProfile from './Components/Profile/CreateProfile';
 import EditProfile from './Components/Profile/EditProfile';
 import AddExp from './Components/Profile/AddExp';
 import AddEdu from './Components/Profile/AddEdu';
 import Profiles from './Components/Profiles/Profiles';
 import Profile from './Components/Profile2/Profile';
+import Post from './Components/Posts/Post';
 import {BrowserRouter as Router, Route, Switch,Routes} from 'react-router-dom';
 //Redux
 import {Provider} from 'react-redux';
@@ -47,6 +49,7 @@ function App() {
           <Route exact path="/profile/:id" id='234' element={<Profile/>} />
           
           <Route exact path="/Dashboard" element={<PrivateRoute/>} />
+          <Route exact path="/posts" element={<PrivateRoutePost/>} />
           <Route exact path="/createProfile" element={<CreateProfile/>} />
           <Route exact path="/edit-profile" element={<EditProfile/>} />
           <Route exact path="/add-education" element={<AddEdu/>} />

@@ -4,7 +4,7 @@ const config = require('config');
 
 module.exports = function (req,res,next) {
     // Get token from headers 
-    console.log("This is start of middle/auth.js file. This is for authentication.")
+    console.log("This is start of middleware autherizzation file. This is for authentication.")
     const token = req.header('x-auth-token');
     console.log(token+' This is token that we fetched from the header.x-auth-token')
     // check  if no token 
