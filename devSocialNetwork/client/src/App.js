@@ -16,6 +16,7 @@ import AddEdu from './Components/Profile/AddEdu';
 import Profiles from './Components/Profiles/Profiles';
 import Profile from './Components/Profile2/Profile';
 import Post from './Components/Posts/Post';
+import PostDiscussion from './Components/PostDiscussion/PostDiscussion';
 import {BrowserRouter as Router, Route, Switch,Routes} from 'react-router-dom';
 //Redux
 import {Provider} from 'react-redux';
@@ -27,9 +28,9 @@ import setAuthToken from './util/setAuthToken';
       setAuthToken(localStorage.token);
   }
 function App() {
-  // useEffect(() => {
-  //   store.dispatch(loadUser());
-  // },  []);
+  useEffect(() => {
+    store.dispatch(loadUser());
+  },  []);
   return (
     <Provider store={store}>
     <Router>
@@ -46,7 +47,7 @@ function App() {
           <Route exact path="/Register" element={<Register/>} />
           <Route exact path="/Login" element={<Login/>} />
           <Route exact path="/profiles" element={<Profiles/>} />
-          <Route exact path="/profile/:id" id='234' element={<Profile/>} />
+          <Route exact path="/profile/:id"  element={<Profile/>} />
           
           <Route exact path="/Dashboard" element={<PrivateRoute/>} />
           <Route exact path="/posts" element={<PrivateRoutePost/>} />
@@ -54,6 +55,8 @@ function App() {
           <Route exact path="/edit-profile" element={<EditProfile/>} />
           <Route exact path="/add-education" element={<AddEdu/>} />
           <Route exact path="/add-experience" element={<AddExp/>} />
+          <Route exact path="/posts/:id"  element={<PostDiscussion/>} />
+
         </Routes>
       </section>
     </Fragment>

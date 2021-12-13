@@ -16,7 +16,9 @@ router.post(
   [auth, [check("text", "text is required").not().isEmpty()]],
   async (req, res) => {
     const error = validationResult(req);
+    console.log('Backend of add post')
     if (!error.isEmpty()) {
+      console.log(Object.values(error))
       return res.status(400).json({ msg: error.array() });
     }
     try {

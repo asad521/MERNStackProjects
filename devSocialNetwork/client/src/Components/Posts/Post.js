@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
 import PostItem from './PostItem';
 import { getPosts } from '../../actions/post';
+import PostForm from './PostForm';
 
 const Post = ({getPosts,posts:{loading,post,posts}}) => {
     console.log(posts)
@@ -13,6 +14,8 @@ const Post = ({getPosts,posts:{loading,post,posts}}) => {
         loading ? 'spinner' : (<Fragment>
                 <h1 className='large text-primary'>Posts</h1>
                 <p className='lead'>Welcome to the Community</p>
+                <PostForm ></PostForm>
+
             <div className='posts'>
                 {posts.map(post=>
                 

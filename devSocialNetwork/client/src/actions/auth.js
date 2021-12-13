@@ -81,10 +81,9 @@ export const login = (email, password) => async dispatch => {
             payload: res.data 
         });
         dispatch(setAlert('Congratulation, You are Logged-In','success'));
-
-        
+              
     } catch (err) {
-        const errors = err.response.data.errors;
+        const errors = err.response.data;
         dispatch(setAlert('Invalid Credentials','danger'));
         if(errors) {
             errors.forEach(error => dispatch(setAlert(error.msg,'danger')))
